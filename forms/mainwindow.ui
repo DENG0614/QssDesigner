@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QssDesigner - 可视化 QSS 界面设计器</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="DesignView" name="centralView">
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>文件(&amp;F)</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionExportUi"/>
+    <addaction name="actionExportProject"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>编辑(&amp;E)</string>
+    </property>
+    <addaction name="actionDelete"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <widget class="QMenu" name="menuAlign">
+     <property name="title">
+      <string>对齐(&amp;A)</string>
+     </property>
+     <addaction name="actionAlignLeft"/>
+     <addaction name="actionAlignRight"/>
+     <addaction name="actionAlignTop"/>
+     <addaction name="actionAlignBottom"/>
+     <addaction name="separator"/>
+     <addaction name="actionAlignHCenter"/>
+     <addaction name="actionAlignVCenter"/>
+     <addaction name="separator"/>
+     <addaction name="actionEqualWidth"/>
+     <addaction name="actionEqualHeight"/>
+    </widget>
+    <widget class="QMenu" name="menuOrder">
+     <property name="title">
+      <string>顺序(&amp;O)</string>
+     </property>
+     <addaction name="actionBringToFront"/>
+     <addaction name="actionSendToBack"/>
+    </widget>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>视图(&amp;V)</string>
+    </property>
+    <addaction name="actionZoomIn"/>
+    <addaction name="actionZoomOut"/>
+    <addaction name="actionZoomReset"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>帮助(&amp;H)</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="objectName">
+    <string>mainToolBar</string>
+   </property>
+   <addaction name="actionNew"/>
+   <addaction name="actionExportUi"/>
+   <addaction name="actionExportProject"/>
+   <addaction name="separator"/>
+   <widget class="QLabel" name="styleLabel">
+    <property name="text">
+     <string>样式：</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="styleCombo">
+    <property name="minimumSize">
+     <size>
+      <width>280</width>
+      <height>0</height>
+     </size>
+    </property>
+   </widget>
+   <addaction name="actionSaveCustomStyle"/>
+  </widget>
+  <widget class="QDockWidget" name="widgetsDock">
+   <property name="windowTitle">
+    <string>控件库</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="WidgetPalette" name="widgetsPalette"/>
+  </widget>
+  <widget class="QDockWidget" name="propertyDock">
+   <property name="windowTitle">
+    <string>属性</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="PropertyPanel" name="propertyPanel"/>
+  </widget>
+  <widget class="QDockWidget" name="styleDock">
+   <property name="windowTitle">
+    <string>QSS 样式编辑器</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QssEditor" name="qssEditor"/>
+  </widget>
+  <widget class="QDockWidget" name="previewDock">
+   <property name="minimumSize">
+    <size>
+     <width>380</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>控件预览（Ctrl+拖拽到画布）</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="PreviewWidget" name="previewWidget"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <widget class="QLabel" name="statusLabel">
+    <property name="text">
+     <string>就绪</string>
+    </property>
+   </widget>
+  </widget>
+  <action name="actionNew">
+   <property name="text">
+    <string>新建(&amp;N)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionExportUi">
+   <property name="text">
+    <string>导出 .ui 文件...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionExportProject">
+   <property name="text">
+    <string>导出 Qt 工程...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>退出(&amp;X)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="text">
+    <string>删除(&amp;D)</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="text">
+    <string>复制(&amp;C)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="text">
+    <string>粘贴(&amp;P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionAlignLeft">
+   <property name="text">
+    <string>左对齐</string>
+   </property>
+  </action>
+  <action name="actionAlignRight">
+   <property name="text">
+    <string>右对齐</string>
+   </property>
+  </action>
+  <action name="actionAlignTop">
+   <property name="text">
+    <string>顶部对齐</string>
+   </property>
+  </action>
+  <action name="actionAlignBottom">
+   <property name="text">
+    <string>底部对齐</string>
+   </property>
+  </action>
+  <action name="actionAlignHCenter">
+   <property name="text">
+    <string>水平居中</string>
+   </property>
+  </action>
+  <action name="actionAlignVCenter">
+   <property name="text">
+    <string>垂直居中</string>
+   </property>
+  </action>
+  <action name="actionEqualWidth">
+   <property name="text">
+    <string>等宽</string>
+   </property>
+  </action>
+  <action name="actionEqualHeight">
+   <property name="text">
+    <string>等高</string>
+   </property>
+  </action>
+  <action name="actionBringToFront">
+   <property name="text">
+    <string>置顶</string>
+   </property>
+  </action>
+  <action name="actionSendToBack">
+   <property name="text">
+    <string>置底</string>
+   </property>
+  </action>
+  <action name="actionZoomIn">
+   <property name="text">
+    <string>放大</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="actionZoomOut">
+   <property name="text">
+    <string>缩小</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionZoomReset">
+   <property name="text">
+    <string>重置缩放</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+0</string>
+   </property>
+  </action>
+  <action name="actionSaveCustomStyle">
+   <property name="text">
+    <string>保存自定义样式</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>关于(&amp;A)</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DesignView</class>
+   <extends>QGraphicsView</extends>
+   <header>designview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WidgetPalette</class>
+   <extends>QTreeWidget</extends>
+   <header>widgetpalette.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PropertyPanel</class>
+   <extends>QTreeWidget</extends>
+   <header>propertypanel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QssEditor</class>
+   <extends>QPlainTextEdit</extends>
+   <header>qsseditor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PreviewWidget</class>
+   <extends>QTabWidget</extends>
+   <header>previewwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
